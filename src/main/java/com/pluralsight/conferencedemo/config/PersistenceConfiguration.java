@@ -15,10 +15,13 @@ public class PersistenceConfiguration {
     @Value("${DB_PASSWORD}")
     private String dbPassword;
 
+    @Value("${DB_URL}")
+    private String dbUrl;
+
     @Bean
     public DataSource dataSource() {
         DataSourceBuilder builder = DataSourceBuilder.create();
-        builder.url("jdbc:mysql://localhost:3306/conference_app?useSSL=false");
+        builder.url(dbUrl);
         builder.username(dbUsername);
         builder.password(dbPassword);
 
